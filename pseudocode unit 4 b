@@ -1,0 +1,75 @@
+# Initialize individuals and teams
+individuals = []
+teams = []
+
+# Function for registering
+SUBROUTINE registration();
+    print("Please enter your name.")
+    name <- USERINPUT
+    print("Please enter your age.")
+    age <- USERINPUT
+    print("Would you like to sign up as a team? (yes/no)")
+    team <- USERINPUT
+    IF team is equal to "yes" THEN
+        print("Please enter your team name.")
+        team_name <- USERINPUT
+        FOR i <- 1 TO 4
+            print("Please enter team member ", i+1, "'s name.")
+            team_member <- USERINPUT
+            team_members.append(team_member)
+            teams.append(team_name)
+        ENDFOR
+    ELSEIF team is equal to "no" THEN
+        print("You have been registered as an individual.")
+        individuals.append(name)
+    ENDIF 
+    IF teams.length = 4 AND individuals.length = 20 THEN
+        print("Registration is closed.")
+        RETURN
+    ENDIF
+ENDSUBROUTINE
+
+# Function for displaying registered individuals and teams
+SUBROUTINE display();
+    FOR i FROM 1 TO length(individuals)
+        print("Individual i", i, ": ", individuals[i])
+    ENDFOR
+
+    FOR j FROM 1 TO length(teams)
+        print("Team t", j, ": ", teams[j])
+    ENDFOR
+ENDSUBROUTINE
+
+# Function for signing up for the competition
+SUBROUTINE signup();
+    print("Please enter your prefix (t for team, i for individual) and number.")
+    prefix <- USERINPUT
+    number <- USERINPUT
+    IF prefix is equal to "t" THEN
+        IF number is in teams THEN
+            print("Which competition would you like to sign up for? (1 for the sporting challenge, 2 for the academic challenge")
+            competition <- USERINPUT
+            IF competition is equal to 1 THEN
+                print("You have been signed up for the sporting challenge.")
+            ELSEIF competition is equal to 2 THEN
+                print("You have been signed up for the academic challenge.")
+            ENDIF
+        ELSE
+            print("Team not found, please try again.")
+        ENDIF
+    ELSEIF prefix is equal to "i" THEN
+        IF number is in individuals THEN
+            print("Which competition would you like to sign up for? (1 for the sporting challenge, 2 for the academic challenge")
+            competition <- USERINPUT
+            IF competition is equal to 1 THEN
+                print("You have been signed up for the sporting challenge.")
+            ELSEIF competition is equal to 2 THEN
+                print("You have been signed up for the academic challenge.")
+            ENDIF
+        ELSE
+            print("Individual not found, please try again.")
+        ENDIF
+    ELSE
+        print("Invalid prefix, please try again.")
+    ENDIF
+ENDSUBROUTINE
